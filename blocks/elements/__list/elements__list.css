@@ -1,0 +1,25 @@
+.elements__list {
+  max-width: 880px;
+  min-height: 744px;
+  list-style: none;
+  padding: 51px 0 0;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 282px));
+  gap: 20px 17px;
+}
+
+@media screen and (max-width: 907px) {
+  .elements__list {
+    padding-right: 27px;
+    padding-left: 27px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .elements__list {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
