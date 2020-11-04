@@ -1,5 +1,6 @@
 .page{
   min-width: 300px;
+  padding: 19px;
   margin: auto;
   font-family: 'Inter', Arial, sans-serif;
   text-rendering: optimizeLegibility;

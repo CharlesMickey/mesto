@@ -6,20 +6,6 @@
   margin: 0 auto;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 282px));
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   gap: 20px 17px;
-}
-
-@media screen and (max-width: 907px) {
-  .elements__list {
-    padding-right: 27px;
-    padding-left: 27px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .elements__list {
-    padding-right: 0;
-    padding-left: 0;
-  }
 }
