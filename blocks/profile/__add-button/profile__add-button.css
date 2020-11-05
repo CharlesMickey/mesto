@@ -10,6 +10,7 @@
   height: 50px;
   width: 150px;
   transition: opacity 0.2s linear;
+  outline: none;
 }
 
 .profile__add-button:hover {
@@ -27,6 +28,6 @@
   .profile__add-button {
     height: 50px;
     width: 282px;
-    margin: 36px auto 0;
+    margin: 36px 0 0;
     }
   }

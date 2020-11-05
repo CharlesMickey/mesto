@@ -10,6 +10,7 @@
   width: 24px;
   transition: opacity 0.2s linear;
   align-self: center;
+  outline: none;
 }
 
 .profile__edit-button:hover {
