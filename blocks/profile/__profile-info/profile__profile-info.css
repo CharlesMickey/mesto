@@ -9,7 +9,6 @@
   align-items: end;
 }
 
-
 @media screen and (max-width: 770px) {
   .profile__profile-info {
     grid-template-rows: 26px 14px;
