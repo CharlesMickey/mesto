@@ -1,4 +1,4 @@
-.popup__your-name {
+.popup__text {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-top: none;
   border-left: none;
@@ -6,13 +6,17 @@
   outline: none;
   background-color: #FFFFFF;
   width: 358px;
-  height: 27px;
+  padding-bottom: 6.6px;
+}
+
+.popup__text:last-of-type{
+  margin: 30px auto 48px 0;
 }
 
 @media screen and (max-width: 565px) {
-  .popup__your-name {
+  .popup__text {
     width: 238px;
-    height: 27px;
+    padding-bottom: 8.2px;
     font-size: 14px;
     line-height: 1.21;
   }

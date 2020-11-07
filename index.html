@@ -6,85 +6,85 @@
     <link rel="stylesheet" href="./page/index.css">
     <title>Mesto</title>
   </head>
-  <body>
-    <main class="page">
+  <body class="page">
       <header class="header">
         <img class="header__logo" src="./images/Logo.svg" alt="Логотип названия сайта Место">
       </header>
+      <main class="main">
   <!--Block Profile-->
-      <section class="profile">
-        <img class="profile__avatar" src="./images/Avatar.jpg" alt="Фотография профиля">
-        <div class="profile__profile-info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button"></button>
-          <p class="profile__interests">Исследователь океана</p>
-        </div>
-        <button type="button" class="profile__add-button"></button>
-      </section>
+        <section class="profile">
+          <img class="profile__avatar" src="./images/Avatar.jpg" alt="Фотография профиля">
+          <div class="profile__profile-info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button"></button>
+            <p class="profile__interests">Исследователь океана</p>
+          </div>
+          <button type="button" class="profile__add-button"></button>
+        </section>
   <!--Block Elements-->
-      <section class="elements">
-        <ul class="elements__list">
-          <li class="element">
-            <img class="element__image" src="./images/mWCRoXLVIsk.jpg" alt="Фото небо над Финским заливом">
-            <div class="element__card">
-              <h2 class="element__title">Финский залив</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/vzlWlVweWA4.jpg" alt="Фото зима на Ладожском озере">
-            <div class="element__card">
-              <h2 class="element__title">Ладожское озеро</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Zaporoj.jpg" alt="Фото Уральского леса">
-            <div class="element__card">
-              <h2 class="element__title">Урал</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Paris.jpg" alt="Фото цетов в Париже">
-            <div class="element__card">
-              <h2 class="element__title">Париж</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Barnaul.jpg" alt="Фото подсолнуха в Барнауле">
-            <div class="element__card">
-              <h2 class="element__title">Барнаул</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Chernogor.jpg" alt="Фото гор Черногории">
-            <div class="element__card">
-              <h2 class="element__title">Черногория</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
+        <section class="elements">
+          <ul class="elements__list">
+            <li class="element">
+              <img class="element__image" src="./images/mWCRoXLVIsk.jpg" alt="Фото небо над Финским заливом">
+              <div class="element__card">
+                <h2 class="element__title">Финский залив</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__image" src="./images/vzlWlVweWA4.jpg" alt="Фото зима на Ладожском озере">
+              <div class="element__card">
+                <h2 class="element__title">Ладожское озеро</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__image" src="./images/Zaporoj.jpg" alt="Фото Уральского леса">
+              <div class="element__card">
+                <h2 class="element__title">Урал</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__image" src="./images/Paris.jpg" alt="Фото цетов в Париже">
+              <div class="element__card">
+                <h2 class="element__title">Париж</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__image" src="./images/Barnaul.jpg" alt="Фото подсолнуха в Барнауле">
+              <div class="element__card">
+                <h2 class="element__title">Барнаул</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__image" src="./images/Chernogor.jpg" alt="Фото гор Черногории">
+              <div class="element__card">
+                <h2 class="element__title">Черногория</h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
   <!--Block Footer-->
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020. Mesto Russia</p>
       </footer>
-  <!--Block Popup-->
+  <!--Block Popup -->
       <section class="popup">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
           <h2 class="popup__form-name">Редактировать профиль</h2>
-          <form class="popup__form">
-            <input type="text" name="name" class="popup__your-name">
-            <input type="text" name="interests" class="popup__interests">
+          <form class="popup__form" name="popup-form">
+            <input type="text" name="name" class="popup__text">
+            <input type="text" name="interests" class="popup__text">
             <button type="submit" value="Отправить на сервер" class="popup__button-submit">Сохранить</button>
           </form>
         </div>
       </section>
-    </main>
       <script src="./script/index.js"></script>
   </body>
 </html>

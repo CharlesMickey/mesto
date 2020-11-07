@@ -9,3 +9,11 @@
   background-color: #000000;
   position: relative;
 }
+
+
+@media screen and (max-width: 495px) {
+  .page {
+    padding-right: 0;
+    padding-left: 0;
+    }
+  }
