@@ -13,7 +13,7 @@ let formElement = document.querySelector(".popup__form");
 function showClic() {
 popup.classList.toggle('popup_opened');
 
-  if (popup.classList.contains('poыpup_opened')) {
+  if (popup.classList.contains('popup_opened')) {
     nameInput.value = profileName.textContent;
     interests.value = profileInterests.textContent;
   }
