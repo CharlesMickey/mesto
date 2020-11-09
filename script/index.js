@@ -10,11 +10,13 @@ let profileInterests = document.querySelector(".profile__interests");
 let interests = document.querySelector('[name="interests"]');
 let formElement = document.querySelector(".popup__form");
 
-  nameInput.value = profileName.textContent;
-  interests.value = profileInterests.textContent;
-
 function showClic() {
 popup.classList.toggle('popup_opened');
+
+  if (popup.classList.contains('poыpup_opened')) {
+    nameInput.value = profileName.textContent;
+    interests.value = profileInterests.textContent;
+  }
 
 }
 
