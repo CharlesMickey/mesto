@@ -1,0 +1,64 @@
+[33mdef6e4a[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranchname[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: checkout: moving from develop to newbranchname
+[33m7fffa88[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{1}: checkout: moving from main to develop
+[33mdef6e4a[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranchname[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{2}: checkout: moving from develop to main
+[33m7fffa88[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{3}: commit: Feat: adding cards via the form
+[33m73cd6ac[m HEAD@{4}: checkout: moving from Feature/feature-add_cards to develop
+[33m2378062[m HEAD@{5}: commit: Feat; adding cards via the form
+[33mdef6e4a[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranchname[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{6}: checkout: moving from main to Feature/feature-add_cards
+[33mdef6e4a[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranchname[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{7}: commit: Feat: add image form
+[33m475f6a6[m HEAD@{8}: commit: Feat: add cards via JS
+[33m65236c1[m HEAD@{9}: commit: Feat: add cards via JS
+[33mfdf817b[m HEAD@{10}: commit: Feat: add cards via JS
+[33mf401594[m HEAD@{11}: commit: Feat: add cards via JS
+[33mbad37bc[m HEAD@{12}: commit: Feat: add cards via JS
+[33m593ffcc[m HEAD@{13}: commit: Feat: add cards via JS
+[33m3fca946[m HEAD@{14}: commit: fix: CSS отступа popup-text
+[33mbf10114[m HEAD@{15}: commit: fix: JS перемещение в тело функции заполнения полей через if
+[33me0d6ff1[m HEAD@{16}: commit: fix: JS перемещение в тело функции заполнения полей через if
+[33m556b762[m HEAD@{17}: commit: refactor: переработка после ревью (убрать фиксированные высоты, объединить класы в popup)
+[33m90438f8[m HEAD@{18}: commit: refactor: переработка после ревью (убрать фиксированные высоты, объединить класы в popup)
+[33m7bfdbd3[m HEAD@{19}: commit: fix: потвтор в стилях
+[33m18f624c[m HEAD@{20}: commit: fix: исправление разметки
+[33m831ac32[m HEAD@{21}: commit: fix: исправление разметки
+[33m6e4ca17[m HEAD@{22}: commit: feat: создать script.js and README
+[33m73cd6ac[m HEAD@{23}: merge develop: Fast-forward
+[33md079208[m HEAD@{24}: checkout: moving from develop to main
+[33m73cd6ac[m HEAD@{25}: commit: feat: создать script.js and README
+[33m1b5c573[m HEAD@{26}: commit: feat: создать script.js and README
+[33mb1ecad1[m[33m ([m[1;31morigin/feature/feature-popup[m[33m)[m HEAD@{27}: merge feature/feature-popup: Fast-forward
+[33mabbf45f[m[33m ([m[1;31morigin/feature/feature-footer[m[33m)[m HEAD@{28}: checkout: moving from feature/feature-popup to develop
+[33mb1ecad1[m[33m ([m[1;31morigin/feature/feature-popup[m[33m)[m HEAD@{29}: commit: feat: создать popup
+[33m6fd6d14[m HEAD@{30}: commit: feat: создать popup
+[33mabbf45f[m[33m ([m[1;31morigin/feature/feature-footer[m[33m)[m HEAD@{31}: checkout: moving from develop to feature/feature-popup
+[33mabbf45f[m[33m ([m[1;31morigin/feature/feature-footer[m[33m)[m HEAD@{32}: merge feature/feature-footer: Fast-forward
+[33m56a7d4f[m HEAD@{33}: checkout: moving from feature/feature-footer to develop
+[33mabbf45f[m[33m ([m[1;31morigin/feature/feature-footer[m[33m)[m HEAD@{34}: commit: feat: создать footer
+[33m56a7d4f[m HEAD@{35}: checkout: moving from develop to feature/feature-footer
+[33m56a7d4f[m HEAD@{36}: commit (merge): feat: создать section elements
+[33m0ae6849[m HEAD@{37}: checkout: moving from feature/feature-elements to develop
+[33m7a15ab4[m[33m ([m[1;31morigin/feature/feature-elements[m[33m)[m HEAD@{38}: commit: feat: создать section elements
+[33md7948c8[m[33m ([m[1;31morigin/feature/feature-profile[m[33m)[m HEAD@{39}: checkout: moving from develop to feature/feature-elements
+[33m0ae6849[m HEAD@{40}: commit: feat: создать section elements
+[33md7948c8[m[33m ([m[1;31morigin/feature/feature-profile[m[33m)[m HEAD@{41}: checkout: moving from feature/feature-elements to develop
+[33md7948c8[m[33m ([m[1;31morigin/feature/feature-profile[m[33m)[m HEAD@{42}: checkout: moving from develop to feature/feature-elements
+[33md7948c8[m[33m ([m[1;31morigin/feature/feature-profile[m[33m)[m HEAD@{43}: merge feature/feature-profile: Fast-forward
+[33m5e8b706[m[33m ([m[1;31morigin/feature/feature-header[m[33m)[m HEAD@{44}: checkout: moving from feature/feature-profile to develop
+[33md7948c8[m[33m ([m[1;31morigin/feature/feature-profile[m[33m)[m HEAD@{45}: commit: feat: создать section profile
+[33m1415aca[m HEAD@{46}: commit: feat: создать section profile
+[33m5e8b706[m[33m ([m[1;31morigin/feature/feature-header[m[33m)[m HEAD@{47}: checkout: moving from develop to feature/feature-profile
+[33m5e8b706[m[33m ([m[1;31morigin/feature/feature-header[m[33m)[m HEAD@{48}: merge feature/feature-header: Fast-forward
+[33ma08eea0[m HEAD@{49}: checkout: moving from feature/feature-header to develop
+[33m5e8b706[m[33m ([m[1;31morigin/feature/feature-header[m[33m)[m HEAD@{50}: commit: feat: создать header
+[33ma08eea0[m HEAD@{51}: checkout: moving from develop to feature/feature-header
+[33ma08eea0[m HEAD@{52}: merge feature/feature-header: Fast-forward
+[33md079208[m HEAD@{53}: checkout: moving from feature/feature-header to develop
+[33ma08eea0[m HEAD@{54}: commit: Оформить head
+[33md079208[m HEAD@{55}: checkout: moving from develop to feature/feature-header
+[33md079208[m HEAD@{56}: merge main: Fast-forward
+[33m9b7e649[m HEAD@{57}: checkout: moving from main to develop
+[33md079208[m HEAD@{58}: commit: Первый коммит
+[33m9b7e649[m HEAD@{59}: checkout: moving from develop to main
+[33m9b7e649[m HEAD@{60}: checkout: moving from main to develop
+[33m9b7e649[m HEAD@{61}: checkout: moving from develop to main
+[33m9b7e649[m HEAD@{62}: checkout: moving from main to develop
+[33m9b7e649[m HEAD@{63}: clone: from https://github.com/CharlesMickey/mesto.git
