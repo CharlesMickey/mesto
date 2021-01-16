@@ -18,23 +18,23 @@ let element = elementTemplate.cloneNode(true);
 const initialCards = [
   {
       name: 'Финский залив',
-      link: '../images/mWCRoXLVIsk.jpg'
+      link: './images/mWCRoXLVIsk.jpg'
   },
   {
       name: 'Ладожское озеро',
-      link: '../images/vzlWlVweWA4.jpg'
+      link: './images/vzlWlVweWA4.jpg'
   },
   {
       name: 'Урал',
-      link: '../images/Zaporoj.jpg'
+      link: './images/Zaporoj.jpg'
   },
   {
       name: 'Париж',
-      link: '../images/Paris.jpg'
+      link: './images/Paris.jpg'
   },
   {
       name: 'Барнаул',
-      link: '../images/Barnaul.jpg'
+      link: './images/Barnaul.jpg'
   },
   {
       name: 'Черногория',
@@ -45,7 +45,7 @@ const initialCards = [
 
 initialCards.forEach(function(item, index) {
   element = elementTemplate.cloneNode(true);
-  element.querySelector('.element__image').src= initialCards[index].link;
+  element.querySelector('.element__image').src=initialCards[index].link;
   element.querySelector('.element__title').textContent=item.name;
   cardList.append(element)
 });
