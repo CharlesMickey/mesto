@@ -1,18 +1,18 @@
-let profile = document.querySelector(".profile");
-let profileProfileInfo = profile.querySelector(".profile__profile-info");
-let buttonOpenForm = profileProfileInfo.querySelector(".profile__edit-button");
-let popup = document.querySelector(".popup");
-let popupContainer = popup.querySelector(".popup__container");
-let buttonCloseForm = popupContainer.querySelector(".popup__button-close");
-let nameInput = document.querySelector('[name="name"]');
-let profileName = document.querySelector(".profile__name");
-let profileInterests = document.querySelector(".profile__interests");
-let interests = document.querySelector('[name="interests"]');
-let formElement = document.querySelector(".popup__form");
+const profile = document.querySelector(".profile");
+const profileProfileInfo = profile.querySelector(".profile__profile-info");
+const buttonOpenForm = profileProfileInfo.querySelector(".profile__edit-button");
+const popup = document.querySelector(".popup");
+const popupContainer = popup.querySelector(".popup__container");
+const buttonCloseForm = popupContainer.querySelector(".popup__button-close");
+const nameInput = document.querySelector('[name="name"]');
+const profileName = document.querySelector(".profile__name");
+const profileInterests = document.querySelector(".profile__interests");
+const interests = document.querySelector('[name="interests"]');
+const formElement = document.querySelector(".popup__form");
 
-let elements = document.querySelector(".elements");
-let cardList = document.querySelector(".elements__list");
-let elementTemplate = document.querySelector("#element").content;
+const elements = document.querySelector(".elements");
+const cardList = document.querySelector(".elements__list");
+const elementTemplate = document.querySelector("#element").content;
 let element = elementTemplate.cloneNode(true);
 
 const initialCards = [
@@ -48,18 +48,7 @@ initialCards.forEach(function(item, index) {
   element.querySelector('.element__image').src= initialCards[index].link;
   element.querySelector('.element__title').textContent=item.name;
   cardList.append(element)
-
 });
-
-
-
-
-
-
-
-
-
-
 
 function showClic() {
 popup.classList.toggle('popup_opened');
@@ -68,7 +57,6 @@ popup.classList.toggle('popup_opened');
     nameInput.value = profileName.textContent;
     interests.value = profileInterests.textContent;
   }
-
 }
 
 function formSubmitHandler(evt) {
