@@ -1,9 +1,12 @@
 const profile = document.querySelector(".profile");
 const profileProfileInfo = profile.querySelector(".profile__profile-info");
 const buttonOpenForm = profileProfileInfo.querySelector(".profile__edit-button");
+const buttonOpenImgAddForm = document.querySelector(".profile__add-button");
 const popup = document.querySelector(".popup");
+const imgForm = document.querySelector("#image-form");
 const popupContainer = popup.querySelector(".popup__container");
 const buttonCloseForm = popupContainer.querySelector(".popup__button-close");
+const buttonCloseImgAddForm = document.querySelector(".button-close");
 const nameInput = document.querySelector('[name="name"]');
 const profileName = document.querySelector(".profile__name");
 const profileInterests = document.querySelector(".profile__interests");
@@ -66,9 +69,14 @@ function formSubmitHandler(evt) {
     showClic();
 }
 
+function showImgForm() {
+  imgForm.classList.toggle('popup_opened');
+}
 
 
 formElement.addEventListener('submit', formSubmitHandler);
 
+buttonOpenImgAddForm.addEventListener('click', showImgForm);
+buttonCloseImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showClic);
 buttonCloseForm.addEventListener('click', showClic);
