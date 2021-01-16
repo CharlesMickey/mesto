@@ -38,7 +38,7 @@ const initialCards = [
   },
   {
       name: 'Черногория',
-      link: 'https://cdn.pixabay.com/photo/2017/08/06/14/12/bokeh-lights-2592859_1280.jpg'
+      link: './images/Chernogor.jpg'
   }
 ];
 
