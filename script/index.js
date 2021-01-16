@@ -89,3 +89,10 @@ function showImgForm() {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+formElements.addEventListener('submit', handlerAddNewCard);
+
+buttonOpenImgAddForm.addEventListener('click', showImgForm);
+buttonCloseImgAddForm.addEventListener('click', showImgForm);
+buttonOpenForm.addEventListener('click', showClic);
+buttonCloseForm.addEventListener('click', showClic);
+
