@@ -1,6 +1,5 @@
 .profile__interests {
   max-width: 336px;
-  min-height: 18px;
   margin: 0;
   font-style: normal;
   font-size: 18px;
@@ -13,7 +12,6 @@
 
 @media screen and (max-width: 770px) {
   .profile__interests {
-    max-height: 50px;
     max-width: 282px;
     margin: 14px auto 0;
     font-size: 14px;

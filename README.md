@@ -19,7 +19,7 @@
 ____________________________
 ### Работа первой части курса Вэб Разработка JS в ЯПрактикум. 
 
-[Ссылка на выполненую работу](https://charlesmickey.github.io/russian-travel/)
+[Ссылка на выполненую работу](https://charlesmickey.github.io/mesto/)
  
 ### Автор:
 *Чухненко Артур (CharlesMickey.ru@yandex.com)*
