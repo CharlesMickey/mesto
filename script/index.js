@@ -10,6 +10,57 @@ let profileInterests = document.querySelector(".profile__interests");
 let interests = document.querySelector('[name="interests"]');
 let formElement = document.querySelector(".popup__form");
 
+let elements = document.querySelector(".elements");
+let cardList = document.querySelector(".elements__list");
+let elementTemplate = document.querySelector("#element").content;
+let element = elementTemplate.cloneNode(true);
+
+const initialCards = [
+  {
+      name: 'Финский залив',
+      link: './images/mWCRoXLVIsk.jpg'
+  },
+  {
+      name: 'Ладожское озеро',
+      link: './images/vzlWlVweWA4.jpg'
+  },
+  {
+      name: 'Урал',
+      link: './images/Zaporoj.jpg'
+  },
+  {
+      name: 'Париж',
+      link: './images/Paris.jpg'
+  },
+  {
+      name: 'Барнаул',
+      link: './images/Barnaul.jpg'
+  },
+  {
+      name: 'Черногория',
+      link: './images/Chernogor.jpg'
+  }
+];
+
+
+initialCards.forEach(function(item, index) {
+  element = elementTemplate.cloneNode(true);
+  element.querySelector('.element__image').src= initialCards[index].link;
+  element.querySelector('.element__title').textContent=item.name;
+  cardList.append(element)
+
+});
+
+
+
+
+
+
+
+
+
+
+
 function showClic() {
 popup.classList.toggle('popup_opened');
 
@@ -20,12 +71,14 @@ popup.classList.toggle('popup_opened');
 
 }
 
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent =  nameInput.value;
     profileInterests.textContent = interests.value;
     showClic();
 }
+
+
 
 formElement.addEventListener('submit', formSubmitHandler);
 

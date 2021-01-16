@@ -24,49 +24,16 @@
   <!--Block Elements-->
         <section class="elements">
           <ul class="elements__list">
-            <li class="element">
-              <img class="element__image" src="./images/mWCRoXLVIsk.jpg" alt="Фото небо над Финским заливом">
-              <div class="element__card">
-                <h2 class="element__title">Финский залив</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__image" src="./images/vzlWlVweWA4.jpg" alt="Фото зима на Ладожском озере">
-              <div class="element__card">
-                <h2 class="element__title">Ладожское озеро</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__image" src="./images/Zaporoj.jpg" alt="Фото Уральского леса">
-              <div class="element__card">
-                <h2 class="element__title">Урал</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__image" src="./images/Paris.jpg" alt="Фото цетов в Париже">
-              <div class="element__card">
-                <h2 class="element__title">Париж</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__image" src="./images/Barnaul.jpg" alt="Фото подсолнуха в Барнауле">
-              <div class="element__card">
-                <h2 class="element__title">Барнаул</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__image" src="./images/Chernogor.jpg" alt="Фото гор Черногории">
-              <div class="element__card">
-                <h2 class="element__title">Черногория</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </li>
           </ul>
+          <template id ="element">
+            <li class="element">
+              <img class="element__image" src="" alt="Фото Мест">
+              <div class="element__card">
+                <h2 class="element__title"></h2>
+                <button type="button" class="element__like"></button>
+              </div>
+            </li>
+          </template>
         </section>
       </main>
   <!--Block Footer-->
@@ -84,6 +51,7 @@
             <button type="submit" value="Отправить на сервер" class="popup__button-submit">Сохранить</button>
           </form>
         </div>
+        <div class="popup__image"></div>
       </section>
       <script src="./script/index.js"></script>
   </body>
