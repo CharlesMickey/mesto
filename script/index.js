@@ -13,10 +13,13 @@ const profileInterests = document.querySelector(".profile__interests");
 const interests = document.querySelector('[name="interests"]');
 const formElement = document.querySelector(".popup__form");
 
+const adName = imgForm.querySelector('[name="name"]');
+const addLink = document.querySelector('[name="link"]');
+const formElements = imgForm.querySelector(".popup__form");
+
 const elements = document.querySelector(".elements");
 const cardList = document.querySelector(".elements__list");
 const elementTemplate = document.querySelector("#element").content;
-let element = elementTemplate.cloneNode(true);
 
 const initialCards = [
   {
@@ -45,13 +48,14 @@ const initialCards = [
   }
 ];
 
-
-initialCards.forEach(function(item, index) {
-  element = elementTemplate.cloneNode(true);
-  element.querySelector('.element__image').src=initialCards[index].link;
+function addCard(item) {
+  const element = elementTemplate.cloneNode(true);
+  element.querySelector('.element__image').src=item.link;
   element.querySelector('.element__title').textContent=item.name;
-  cardList.append(element)
-});
+  cardList.append(element);
+}
+
+initialCards.forEach(addCard);
 
 function showClic() {
 popup.classList.toggle('popup_opened');
@@ -69,12 +73,23 @@ function formSubmitHandler(evt) {
     showClic();
 }
 
+function handlerAddNewCard(evt) {
+  evt.preventDefault();
+  const element = elementTemplate.cloneNode(true);
+  element.querySelector('.element__image').src=addLink.value;
+  element.querySelector('.element__title').textContent=adName.value;
+  cardList.prepend(element);
+  showImgForm();
+  adName.value = '';
+  addLink.value = '';
+}
+
 function showImgForm() {
   imgForm.classList.toggle('popup_opened');
 }
 
-
 formElement.addEventListener('submit', formSubmitHandler);
+formElements.addEventListener('submit', handlerAddNewCard);
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonCloseImgAddForm.addEventListener('click', showImgForm);
