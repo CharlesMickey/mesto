@@ -48,29 +48,31 @@ const initialCards = [
   }
 ];
 
+function render() {
+  initialCards.forEach(addCard);
+}
 
 function addCard(item) {
   const element = elementTemplate.cloneNode(true);
   element.querySelector('.element__image').src=item.link;
   element.querySelector('.element__title').textContent=item.name;
-
-  element.querySelector('.element__like').addEventListener('click', function(evt){
-    const likeActives = evt.target;
-    likeActives.classList.toggle('element__like_active');
-  });
+  setListeners(element);
   cardList.append(element);
 }
 
-initialCards.forEach(addCard);
-
-function showClic() {
-popup.classList.toggle('popup_opened');
-
-  if (popup.classList.contains('popup_opened')) {
-    nameInput.value = profileName.textContent;
-    interests.value = profileInterests.textContent;
-  }
+function setListeners(elem) {
+  elem.querySelector('.element__trash').addEventListener('click', handleDelete);
+  elem.querySelector('.element__like').addEventListener('click', handleLike)
 }
+
+function handleDelete(evt) {
+	evt.target.closest('.element').remove();
+}
+
+function handleLike(evt) {
+	evt.target.classList.toggle('element__like_active');
+}
+
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -84,16 +86,25 @@ function handlerAddNewCard(evt) {
   const element = elementTemplate.cloneNode(true);
   element.querySelector('.element__image').src=addLink.value;
   element.querySelector('.element__title').textContent=addName.value;
-
-  element.querySelector('.element__like').addEventListener('click', function(evt){
-    const likeActives = evt.target;
-    likeActives.classList.toggle('element__like_active');
-  });
+  setListeners(element);
   cardList.prepend(element);
   showImgForm();
-  addName.value = '';
-  addLink.value = '';
+  resetEditMode();
 }
+
+  function resetEditMode() {
+    addName.value = '';
+    addLink.value = '';
+  }
+
+  function showClic() {
+    popup.classList.toggle('popup_opened');
+
+      if (popup.classList.contains('popup_opened')) {
+        nameInput.value = profileName.textContent;
+        interests.value = profileInterests.textContent;
+      }
+    }
 
 function showImgForm() {
   imgForm.classList.toggle('popup_opened');
@@ -102,8 +113,9 @@ function showImgForm() {
 formElement.addEventListener('submit', formSubmitHandler);
 formImage.addEventListener('submit', handlerAddNewCard);
 
-
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonCloseImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showClic);
 buttonCloseForm.addEventListener('click', showClic);
+
+render();
