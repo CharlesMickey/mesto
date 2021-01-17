@@ -13,9 +13,9 @@ const profileInterests = document.querySelector(".profile__interests");
 const interests = document.querySelector('[name="interests"]');
 const formElement = document.querySelector(".popup__form");
 
-const adName = imgForm.querySelector('[name="name"]');
+const addName = imgForm.querySelector('[name="name"]');
 const addLink = document.querySelector('[name="link"]');
-const formElements = imgForm.querySelector(".popup__form");
+const formImage = imgForm.querySelector(".popup__form");
 
 const elements = document.querySelector(".elements");
 const cardList = document.querySelector(".elements__list");
@@ -48,10 +48,16 @@ const initialCards = [
   }
 ];
 
+
 function addCard(item) {
   const element = elementTemplate.cloneNode(true);
   element.querySelector('.element__image').src=item.link;
   element.querySelector('.element__title').textContent=item.name;
+
+  element.querySelector('.element__like').addEventListener('click', function(evt){
+    const likeActives = evt.target;
+    likeActives.classList.toggle('element__like_active');
+  });
   cardList.append(element);
 }
 
@@ -77,10 +83,15 @@ function handlerAddNewCard(evt) {
   evt.preventDefault();
   const element = elementTemplate.cloneNode(true);
   element.querySelector('.element__image').src=addLink.value;
-  element.querySelector('.element__title').textContent=adName.value;
+  element.querySelector('.element__title').textContent=addName.value;
+
+  element.querySelector('.element__like').addEventListener('click', function(evt){
+    const likeActives = evt.target;
+    likeActives.classList.toggle('element__like_active');
+  });
   cardList.prepend(element);
   showImgForm();
-  adName.value = '';
+  addName.value = '';
   addLink.value = '';
 }
 
@@ -89,10 +100,10 @@ function showImgForm() {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
-formElements.addEventListener('submit', handlerAddNewCard);
+formImage.addEventListener('submit', handlerAddNewCard);
+
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonCloseImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showClic);
 buttonCloseForm.addEventListener('click', showClic);
-
