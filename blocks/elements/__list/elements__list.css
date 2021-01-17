@@ -1,6 +1,6 @@
 .elements__list {
   max-width: 880px;
-  min-height: 744px;
+  max-height: 744px;
   list-style: none;
   padding: 51px 0 0;
   margin: 0 auto;
