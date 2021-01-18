@@ -7,7 +7,7 @@ const imgForm = document.querySelector("#image-form");
 const popupContainer = popup.querySelector(".popup__container");
 const buttonCloseForm = popupContainer.querySelector(".popup__button-close");
 const buttonCloseImgAddForm = document.querySelector(".button-close");
-const buttonCloseImgPopupForm = document.querySelector(".popup__button_close_popup_img");
+const buttonCloseImgPopupForm = document.querySelector(".popup__button-close_popup_img");
 const nameInput = document.querySelector('[name="name"]');
 const profileName = document.querySelector(".profile__name");
 const profileInterests = document.querySelector(".profile__interests");
