@@ -28,7 +28,7 @@
           <template id ="element">
             <li class="element">
               <button type="button" class="element__trash"></button>
-              <img class="element__image" src="#" alt="Фото Мест">
+              <img class="element__image element__image_popup_open" src="#" alt="Фото Мест">
               <div class="element__card">
                 <h2 class="element__title"></h2>
                 <button type="button" class="element__like"></button>
@@ -59,10 +59,17 @@
           <h2 class="popup__form-name">Новое место</h2>
           <form class="popup__form" name="popup-form">
             <input type="text" placeholder="Новое место" name="name" class="popup__text popup__place">
-            <input type="link" placeholder="Ссылка на картинку" name="link" class="popup__text">
+            <input type="text" placeholder="Ссылка на картинку" name="link" class="popup__text">
             <button type="submit" value="Отправить на сервер" class="popup__button-submit">Создать</button>
           </form>
         </div>
+      </div>
+      <div class="popup" id="popup-image">
+        <figure class="popup__container-image">
+          <button class="popup__button-close popup__button_close_popup_img" type="button"></button>
+          <img class="popup__image" src="#" alt="Фото">
+          <figcaption class="popup__image-title">Подпись под фото</figcaption>
+        </figure>
       </div>
       <script src="./script/index.js"></script>
   </body>
