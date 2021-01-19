@@ -50,7 +50,10 @@ const initialCards = [
 ];
 
 function render() {
-  initialCards.forEach(addCard);
+  initialCards.forEach(function(item) {
+    const addCard = createCard(item);
+    addCardDocElem(addCard);
+  });
 }
 
 function handleOpenImagePopup(evt) {
@@ -73,17 +76,18 @@ function setListeners(elem) {
   elem.querySelector('.element__like').addEventListener('click', handleLike);
   elem.querySelector('.element__image_popup_open').addEventListener('click', handleOpenImagePopup);
 }
-const addCardDocElem = function(elem){
+  function addCardDocElem(elem){
   cardList.append(elem);
 }
 
-function addCard(item) {
+function createCard(item) {
   const element = elementTemplate.cloneNode(true);
   element.querySelector('.element__image').src=item.link;
   element.querySelector('.element__title').textContent=item.name;
   setListeners(element);
-  addCardDocElem(element);
+  return element;
 }
+
 
 function showUserForm() {
   popup.classList.toggle('popup_opened');
@@ -117,8 +121,8 @@ function addNewCard(elem) {
 function handlerCreateNewCard(evt) {
   evt.preventDefault();
   const element = elementTemplate.cloneNode(true);
-  element.querySelector('.element__image').src=addLink.value;
   element.querySelector('.element__title').textContent=addName.value;
+  element.querySelector('.element__image').src=addLink.value;
   setListeners(element);
   addNewCard(element);
   showImgForm();
