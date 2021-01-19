@@ -88,7 +88,6 @@ function createCard(item) {
   return element;
 }
 
-
 function showUserForm() {
   popup.classList.toggle('popup_opened');
 
