@@ -47,9 +47,23 @@
           <button class="popup__button-close" type="button"></button>
           <h2 class="popup__form-name">Редактировать профиль</h2>
           <form class="popup__form" name="popup-form">
-            <input type="text" name="name" class="popup__text">
-            <input type="text" name="interests" class="popup__text">
-            <button type="submit" value="Отправить на сервер" class="popup__button-submit">Сохранить</button>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="popup__input"
+              required
+            />
+            <span class="popup__input-error" id="name-error"></span>
+            <input
+              type="text"
+              name="about"
+              id="about"
+              class="popup__input"
+              required
+            />
+            <span class="popup__input-error" id="about-error"></span>
+            <button type="submit" value="Отправить на сервер" class="popup__button popup__button-submit">Сохранить</button>
           </form>
         </div>
       </div>
@@ -58,9 +72,24 @@
           <button class="popup__button-close button-close" type="button"></button>
           <h2 class="popup__form-name">Новое место</h2>
           <form class="popup__form" name="popup-form">
-            <input type="text" placeholder="Новое место" name="name" class="popup__text popup__place">
-            <input type="text" placeholder="Ссылка на картинку" name="link" class="popup__text">
-            <button type="submit" value="Отправить на сервер" class="popup__button-submit">Создать</button>
+            <input type="text"
+              placeholder="Новое место"
+              name="name"
+              id="name"
+              class="popup__input popup__place"
+              required
+            />
+            <span class="popup__input-error" id="name-error"></span>
+            <input
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="link"
+              id="link"
+              class="popup__input"
+              required
+            />
+            <span class="popup__input-error" id="link-error"></span>
+            <button type="submit" value="Отправить на сервер" class="popup__button popup__button-submit">Создать</button>
           </form>
         </div>
       </div>
@@ -71,6 +100,7 @@
           <figcaption class="popup__image-title">Подпись под фото</figcaption>
         </figure>
       </div>
+      <!--<script src="./script/validate.js"></script>-->
       <script src="./script/index.js"></script>
   </body>
 </html>

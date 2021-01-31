@@ -11,7 +11,7 @@ const buttonCloseImgPopupForm = document.querySelector(".popup__button-close_pop
 const nameInput = document.querySelector('[name="name"]');
 const profileName = document.querySelector(".profile__name");
 const profileInterests = document.querySelector(".profile__interests");
-const interests = document.querySelector('[name="interests"]');
+const interests = document.querySelector('[name="about"]');
 const formElement = document.querySelector(".popup__form");
 const imgPopup = document.querySelector("#popup-image");
 const addName = imgForm.querySelector('[name="name"]');
@@ -62,7 +62,7 @@ function closePopupEcs(evt) {
 }
 
 function closePopupClickOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
+  if (evt.target.classList.contains('popup') && document.querySelector('.popup_opened')) {
     closePopup();
   }
 }
