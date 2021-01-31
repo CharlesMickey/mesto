@@ -22,53 +22,84 @@ const elements = document.querySelector(".elements");
 const cardList = document.querySelector(".elements__list");
 const elementTemplate = document.querySelector("#element").content;
 
-const initialCards = [
-  {
-      name: 'Финский залив',
-      link: './images/mWCRoXLVIsk.jpg'
+const initialCards = [{
+    name: 'Финский залив',
+    link: './images/mWCRoXLVIsk.jpg'
   },
   {
-      name: 'Ладожское озеро',
-      link: './images/vzlWlVweWA4.jpg'
+    name: 'Ладожское озеро',
+    link: './images/vzlWlVweWA4.jpg'
   },
   {
-      name: 'Урал',
-      link: './images/Zaporoj.jpg'
+    name: 'Урал',
+    link: './images/Zaporoj.jpg'
   },
   {
-      name: 'Париж',
-      link: './images/Paris.jpg'
+    name: 'Париж',
+    link: './images/Paris.jpg'
   },
   {
-      name: 'Барнаул',
-      link: './images/Barnaul.jpg'
+    name: 'Барнаул',
+    link: './images/Barnaul.jpg'
   },
   {
-      name: 'Черногория',
-      link: './images/Chernogor.jpg'
+    name: 'Черногория',
+    link: './images/Chernogor.jpg'
   }
 ];
 
 function render() {
-  initialCards.forEach(function(item) {
+  initialCards.forEach(function (item) {
     const addCard = createCard(item);
     addCardDocElem(addCard);
   });
 }
 
+function closePopupEcs(evt) {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+}
+
+function closePopupClickOverlay(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup();
+  }
+}
+
+function listenersKeyClosePopup() {
+  document.addEventListener('keydown', closePopupEcs)
+  document.addEventListener('click', closePopupClickOverlay)
+}
+
+function showUserForm() {
+  popup.classList.add('popup_opened');
+  nameInput.value = profileName.textContent;
+  interests.value = profileInterests.textContent;
+  listenersKeyClosePopup()
+}
+
+function closePopup() {
+  const popupClose = document.querySelector('.popup_opened')
+  popupClose.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEcs)
+  document.addEventListener('click', closePopupClickOverlay)
+}
+
 function handleOpenImagePopup(evt) {
   const event = evt.target;
   imgPopup.querySelector('.popup__image').src = event.getAttribute('src', true);
-  imgPopup.querySelector('.popup__image-title').textContent=event.closest('.element').textContent;
+  imgPopup.querySelector('.popup__image-title').textContent = event.closest('.element').textContent;
   imgPopup.classList.add('popup_opened');
+  listenersKeyClosePopup()
 }
 
 function handleDelete(evt) {
-	evt.target.closest('.element').remove();
+  evt.target.closest('.element').remove();
 }
 
 function handleLike(evt) {
-	evt.target.classList.toggle('element__like_active');
+  evt.target.classList.toggle('element__like_active');
 }
 
 function setListeners(elem) {
@@ -76,36 +107,29 @@ function setListeners(elem) {
   elem.querySelector('.element__like').addEventListener('click', handleLike);
   elem.querySelector('.element__image_popup_open').addEventListener('click', handleOpenImagePopup);
 }
-  function addCardDocElem(elem){
+
+function addCardDocElem(elem) {
   cardList.append(elem);
 }
 
 function createCard(item) {
   const element = elementTemplate.cloneNode(true);
-  element.querySelector('.element__image').src=item.link;
-  element.querySelector('.element__title').textContent=item.name;
+  element.querySelector('.element__image').src = item.link;
+  element.querySelector('.element__title').textContent = item.name;
   setListeners(element);
   return element;
 }
 
-function showUserForm() {
-  popup.classList.toggle('popup_opened');
-
-    if (popup.classList.contains('popup_opened')) {
-      nameInput.value = profileName.textContent;
-      interests.value = profileInterests.textContent;
-    }
-}
-
 function formSubmitHandler(evt) {
-    evt.preventDefault();
-    profileName.textContent =  nameInput.value;
-    profileInterests.textContent = interests.value;
-    showUserForm();
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileInterests.textContent = interests.value;
+  closePopup();
 }
 
 function showImgForm() {
-  imgForm.classList.toggle('popup_opened');
+  imgForm.classList.add('popup_opened');
+  listenersKeyClosePopup()
 }
 
 function resetEditMode() {
@@ -120,13 +144,14 @@ function addNewCard(elem) {
 function handlerCreateNewCard(evt) {
   evt.preventDefault();
   const element = elementTemplate.cloneNode(true);
-  element.querySelector('.element__title').textContent=addName.value;
-  element.querySelector('.element__image').src=addLink.value;
+  element.querySelector('.element__title').textContent = addName.value;
+  element.querySelector('.element__image').src = addLink.value;
   setListeners(element);
   addNewCard(element);
-  showImgForm();
+  closePopup();
   resetEditMode();
 }
+
 
 function closeImagePopup() {
   imgPopup.classList.remove('popup_opened');
@@ -136,9 +161,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 formImage.addEventListener('submit', handlerCreateNewCard);
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
-buttonCloseImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
-buttonCloseForm.addEventListener('click', showUserForm);
-buttonCloseImgPopupForm.addEventListener('click', closeImagePopup);
+
+buttonCloseImgAddForm.addEventListener('click', closePopup); // Слушатели закрытия popups (3 подряд)
+buttonCloseForm.addEventListener('click', closePopup);
+buttonCloseImgPopupForm.addEventListener('click', closePopup);
 
 render();
