@@ -76,14 +76,17 @@ function showUserForm() {
   popup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   interests.value = profileInterests.textContent;
+  disableValidation(formElement, validationConfig)
+  enableValidation(validationConfig);
   listenersKeyClosePopup()
 }
 
 function closePopup() {
   const popupClose = document.querySelector('.popup_opened')
   popupClose.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEcs)
-  document.addEventListener('click', closePopupClickOverlay)
+  document.removeEventListener('keydown', closePopupEcs);
+  document.removeEventListener('click', closePopupClickOverlay);
+  resetEditMode();
 }
 
 function handleOpenImagePopup(evt) {
@@ -129,6 +132,7 @@ function formSubmitHandler(evt) {
 
 function showImgForm() {
   imgForm.classList.add('popup_opened');
+  disableValidation(formImage, validationConfig)
   listenersKeyClosePopup()
 }
 
@@ -151,7 +155,6 @@ function handlerCreateNewCard(evt) {
   closePopup();
   resetEditMode();
 }
-
 
 function closeImagePopup() {
   imgPopup.classList.remove('popup_opened');
