@@ -13,7 +13,17 @@
   text-rendering: optimizeLegibility;
   font-size: 14px;
   line-height: 1.41;
+
 }
+
+.popup__input::placeholder {
+font-family: 'Inter', 'arial', sans-serif;
+font-weight: normal;
+font-size: 14px;
+line-height: 1.21;
+color: #C4C4C4;
+ }
+
 
 @media screen and (max-width: 565px) {
   .popup__input {
