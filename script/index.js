@@ -57,7 +57,6 @@ function closePopup() {
   const popupClose = document.querySelector('.popup_opened')
   popupClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEcs);
-  document.removeEventListener('click', closePopupClickOverlay);
 }
 
 function closePopupEcs(evt) {
