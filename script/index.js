@@ -1,13 +1,11 @@
 const profile = document.querySelector(".profile");
+const popupsList = document.querySelectorAll('.popup')
 const profileProfileInfo = profile.querySelector(".profile__profile-info");
 const buttonOpenForm = profileProfileInfo.querySelector(".profile__edit-button");
 const buttonOpenImgAddForm = document.querySelector(".profile__add-button");
 const profilePopup = document.querySelector("#profile-popup");
 const imgForm = document.querySelector("#image-form");
 const popupContainer = profilePopup.querySelector(".popup__container");
-const buttonCloseForm = popupContainer.querySelector(".popup__button-close");
-const buttonCloseImgAddForm = document.querySelector(".button-close");
-const buttonCloseImgPopupForm = document.querySelector(".popup__button-close_popup_img");
 const nameInput = document.querySelector('[name="name"]');
 const profileName = document.querySelector(".profile__name");
 const profileInterests = document.querySelector(".profile__interests");
@@ -55,22 +53,33 @@ function render() {
   });
 }
 
+function closePopup() {
+  const popupClose = document.querySelector('.popup_opened')
+  popupClose.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEcs);
+  document.removeEventListener('click', closePopupClickOverlay);
+}
+
 function closePopupEcs(evt) {
   if (evt.key === 'Escape') {
     closePopup();
   }
 }
 
-function closePopupClickOverlay(evt) {
-  if (evt.target.classList.contains('popup') && document.querySelector('.popup_opened')) {
-    closePopup();
-  }
-}
+popupsList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup)
+    }
+  })
+})
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEcs)
-  document.addEventListener('click', closePopupClickOverlay)
 }
 
 function showUserForm() {
@@ -79,13 +88,6 @@ function showUserForm() {
   interests.value = profileInterests.textContent;
   disableValidation(formElement, validationConfig)
   setButtonState(profilePopupSubmit, formElement.checkValidity(), validationConfig)
-}
-
-function closePopup() {
-  const popupClose = document.querySelector('.popup_opened')
-  popupClose.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEcs);
-  document.removeEventListener('click', closePopupClickOverlay);
 }
 
 function handleOpenImagePopup(item) {
@@ -146,19 +148,13 @@ function addNewCard(elem) {
 
 function handlerCreateNewCard(evt) {
   evt.preventDefault();
-  const element = elementTemplate.cloneNode(true);
   const item = {
-    name: element.querySelector('.element__title').textContent = addName.value,
-    link: element.querySelector('.element__image').src = addLink.value
+    name: addName.value,
+    link: addLink.value
   }
-  setListeners(element, item);
+  const element = createCard(item);
   addNewCard(element);
   closePopup();
-  resetEditMode();
-}
-
-function closeImagePopup() {
-  imgPopup.classList.remove('popup_opened');
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -167,8 +163,6 @@ formImage.addEventListener('submit', handlerCreateNewCard);
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
 
-buttonCloseImgAddForm.addEventListener('click', closePopup); // Слушатели закрытия popups (3 подряд)
-buttonCloseForm.addEventListener('click', closePopup);
-buttonCloseImgPopupForm.addEventListener('click', closePopup);
+
 
 render();
