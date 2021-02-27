@@ -60,7 +60,7 @@ export default class FormValidator {
       this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
-
+      
       const submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
       this._setButtonState(submitButton, this._formElement.checkValidity())
       this._disableValidation()
