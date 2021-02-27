@@ -1,4 +1,3 @@
-
 import { validationConfig } from './FormValidator.js';
 
 import FormValidator from './FormValidator.js';
@@ -21,7 +20,6 @@ const addLink = document.querySelector('[name="link"]');
 const formImage = imgForm.querySelector(".popup__form");
 const profilePopupSubmit = profileForm.querySelector("#profile-popup__submit");
 const cardList = document.querySelector(".elements__list");
-
 
 
 const initialCards = [{
