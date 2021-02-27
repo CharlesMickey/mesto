@@ -1,3 +1,7 @@
+
+import { validationConfig } from './FormValidator.js';
+
+import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
 const profile = document.querySelector(".profile");
@@ -11,11 +15,11 @@ const nameInput = document.querySelector('[name="name"]');
 const profileName = document.querySelector(".profile__name");
 const profileInterests = document.querySelector(".profile__interests");
 const interests = document.querySelector('[name="about"]');
-const formElement = document.querySelector(".popup__form");
+const profileForm = profilePopup.querySelector(".popup__form");
 const addName = imgForm.querySelector('[name="name"]');
 const addLink = document.querySelector('[name="link"]');
 const formImage = imgForm.querySelector(".popup__form");
-const profilePopupSubmit = formElement.querySelector("#profile-popup__submit");
+const profilePopupSubmit = profileForm.querySelector("#profile-popup__submit");
 const cardList = document.querySelector(".elements__list");
 
 
@@ -82,12 +86,16 @@ export function openPopup(popup) {
   document.addEventListener('keydown', closePopupEcs)
 }
 
+const d = new FormValidator(validationConfig, profileForm);
+
 function showUserForm() {
   openPopup(profilePopup)
   nameInput.value = profileName.textContent;
   interests.value = profileInterests.textContent;
-  disableValidation(formElement, validationConfig)
-  setButtonState(profilePopupSubmit, formElement.checkValidity(), validationConfig)
+
+  d._setButtonState(profilePopupSubmit, profileForm.checkValidity())
+  d.disableValidation()
+  d.enableValidation();
 }
 
 function formSubmitHandler(evt) {
@@ -97,10 +105,15 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
+ const p = new FormValidator(validationConfig, formImage);
+
 function showImgForm() {
   openPopup(imgForm);
   resetEditMode();
-  disableValidation(formImage, validationConfig);
+  p.disableValidation()
+p.enableValidation()
+
+
 }
 
 function resetEditMode() {
@@ -123,7 +136,7 @@ function handlerCreateNewCard() {
   closePopup();
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', formSubmitHandler);
 formImage.addEventListener('submit', () => {
   handlerCreateNewCard();
 });
