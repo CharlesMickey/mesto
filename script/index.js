@@ -86,13 +86,11 @@ export function openPopup(popup) {
   document.addEventListener('keydown', closePopupEcs)
 }
 
-const d = new FormValidator(validationConfig, profileForm);
-
 function showUserForm() {
   openPopup(profilePopup)
   nameInput.value = profileName.textContent;
   interests.value = profileInterests.textContent;
-  d.enableValidation();
+  new FormValidator(validationConfig, profileForm).enableValidation();
 }
 
 function formSubmitHandler(evt) {
@@ -102,12 +100,10 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
- const p = new FormValidator(validationConfig, formImage);
-
 function showImgForm() {
   openPopup(imgForm);
   resetEditMode();
-  p.enableValidation();
+  new FormValidator(validationConfig, formImage).enableValidation();
 }
 
 function resetEditMode() {
