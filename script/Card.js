@@ -52,7 +52,5 @@ export default class Card {
     this._element.querySelector('.element__title').textContent = this._name;
 
   	return this._element;
-
   }
-
 }

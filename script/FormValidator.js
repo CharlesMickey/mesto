@@ -1,4 +1,3 @@
-
 export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
@@ -19,7 +18,7 @@ export default class FormValidator {
     inputElement.classList.remove(this._config.inputErrorClass);
   }
 
-  disableValidation() {
+  _disableValidation() {
     const inputsList = this._formElement.querySelectorAll(this._config.inputSelector);
     inputsList.forEach((inputElement) => {
       this._hideError(inputElement)
@@ -64,6 +63,7 @@ export default class FormValidator {
 
       const submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
       this._setButtonState(submitButton, this._formElement.checkValidity())
+      this._disableValidation()
   }
 }
 

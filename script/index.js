@@ -76,10 +76,10 @@ popupsList.forEach((popup) => {
       closePopup(popup);
     }
     if (evt.target.classList.contains('popup__button-close')) {
-      closePopup(popup)
+      closePopup(popup);
     }
-  })
-})
+  });
+});
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -92,9 +92,6 @@ function showUserForm() {
   openPopup(profilePopup)
   nameInput.value = profileName.textContent;
   interests.value = profileInterests.textContent;
-
-  d._setButtonState(profilePopupSubmit, profileForm.checkValidity())
-  d.disableValidation()
   d.enableValidation();
 }
 
@@ -110,10 +107,7 @@ function formSubmitHandler(evt) {
 function showImgForm() {
   openPopup(imgForm);
   resetEditMode();
-  p.disableValidation()
-p.enableValidation()
-
-
+  p.enableValidation();
 }
 
 function resetEditMode() {
