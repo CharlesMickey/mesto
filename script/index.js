@@ -18,7 +18,6 @@ const profileForm = profilePopup.querySelector(".popup__form");
 const addName = imgForm.querySelector('[name="name"]');
 const addLink = document.querySelector('[name="link"]');
 const formImage = imgForm.querySelector(".popup__form");
-const profilePopupSubmit = profileForm.querySelector("#profile-popup__submit");
 const cardList = document.querySelector(".elements__list");
 
 
