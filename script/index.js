@@ -1,4 +1,5 @@
 import { validationConfig } from './FormValidator.js';
+import { initialCards } from './constants.js'
 
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
@@ -21,37 +22,14 @@ const formImage = imgForm.querySelector(".popup__form");
 const cardList = document.querySelector(".elements__list");
 
 
-const initialCards = [{
-    name: 'Финский залив',
-    link: './images/mWCRoXLVIsk.jpg'
-  },
-  {
-    name: 'Ладожское озеро',
-    link: './images/vzlWlVweWA4.jpg'
-  },
-  {
-    name: 'Урал',
-    link: './images/Zaporoj.jpg'
-  },
-  {
-    name: 'Париж',
-    link: './images/Paris.jpg'
-  },
-  {
-    name: 'Барнаул',
-    link: './images/Barnaul.jpg'
-  },
-  {
-    name: 'Черногория',
-    link: './images/Chernogor.jpg'
-  }
-];
+function creatNewElementClassCard(item) {
+  const addCard = new Card(item, "#element", openPopup);
+  return addCard.generateCard();
+}
 
 function renderDefaultCard() {
-  initialCards.forEach(function (item) {
-    const addCard = new Card(item, "#element");
-    const defaultCard = addCard.generateCard();
-    cardList.append(defaultCard);
+  initialCards.forEach(function(item) {
+    cardList.append(creatNewElementClassCard(item));
   });
 }
 
@@ -78,16 +56,19 @@ popupsList.forEach((popup) => {
   });
 });
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEcs)
 }
+
+const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
+newValidClassProfileForm.enableValidation();
 
 function showUserForm() {
   openPopup(profilePopup)
   nameInput.value = profileName.textContent;
   interests.value = profileInterests.textContent;
-  new FormValidator(validationConfig, profileForm).enableValidation();
+  newValidClassProfileForm.quickValidationCheck();
 }
 
 function formSubmitHandler(evt) {
@@ -97,15 +78,15 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
+
+const newValidClassImgForm = new FormValidator(validationConfig, formImage);
+newValidClassImgForm.enableValidation();
+
 function showImgForm() {
   openPopup(imgForm);
-  resetEditMode();
-  new FormValidator(validationConfig, formImage).enableValidation();
-}
+  formImage.reset();
+  newValidClassImgForm.quickValidationCheck();
 
-function resetEditMode() {
-  addName.value = '';
-  addLink.value = '';
 }
 
 function addNewCard(elem) {
@@ -117,9 +98,7 @@ function handlerCreateNewCard() {
     name: addName.value,
     link: addLink.value
   }
-  const addCard = new Card(item, "#element");
-  const newCard = addCard.generateCard();
-  addNewCard(newCard);
+  addNewCard(creatNewElementClassCard(item));
   closePopup();
 }
 

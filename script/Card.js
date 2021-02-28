@@ -1,10 +1,9 @@
-import { openPopup  } from './index.js';
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, openPopup) {
   this._cardSelector = cardSelector;
   this._name = data.name;
   this._link = data.link;
+  this._openPopup = openPopup;
   }
 
   _getTemplate() {
@@ -26,9 +25,10 @@ export default class Card {
   }
 
   _handleOpenImagePopup() {
-    document.querySelector("#popup-image").querySelector('.popup__image').src = this._link;
-    document.querySelector("#popup-image").querySelector('.popup__image-title').textContent = this._name;
-    openPopup(document.querySelector("#popup-image"))
+    const popupImg = document.querySelector("#popup-image");
+    popupImg.querySelector('.popup__image').src = this._link;
+    popupImg.querySelector('.popup__image-title').textContent = this._name;
+    this._openPopup(popupImg)
   }
 
   _setListeners() {

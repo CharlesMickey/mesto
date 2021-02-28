@@ -19,8 +19,7 @@ export default class FormValidator {
   }
 
   _disableValidation() {
-    const inputsList = this._formElement.querySelectorAll(this._config.inputSelector);
-    inputsList.forEach((inputElement) => {
+    this._inputsList.forEach((inputElement) => {
       this._hideError(inputElement)
     });
   }
@@ -33,26 +32,33 @@ export default class FormValidator {
     }
   }
 
-  _setButtonState(button, formValid) {
+  _setButtonState(formValid) {
     if (formValid) {
-      button.classList.remove(this._config.inactiveButtonClass);
-      button.disabled = false;
+      this._submitButton.classList.remove(this._config.inactiveButtonClass);
+      this._submitButton.disabled = false;
     } else {
-      button.classList.add(this._config.inactiveButtonClass);
-      button.disabled = true;
+      this._submitButton.classList.add(this._config.inactiveButtonClass);
+      this._submitButton.disabled = true;
     }
   }
 
-  _setEventListeners() {
-    const inputsList = this._formElement.querySelectorAll(this._config.inputSelector);
-    const submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
 
-    inputsList.forEach((inputElement) => {
+  _setEventListeners() {
+    this._inputsList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    this._submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
+
+    this._inputsList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._setButtonState(submitButton, this._formElement.checkValidity());
+        this._setButtonState(this._formElement.checkValidity());
       });
     });
+  }
+
+  quickValidationCheck() {
+    this._disableValidation()
+    this._setButtonState(this._formElement.checkValidity())
+
   }
 
   enableValidation() {
@@ -60,10 +66,8 @@ export default class FormValidator {
       this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
-      
-      const submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
-      this._setButtonState(submitButton, this._formElement.checkValidity())
-      this._disableValidation()
+
+      // this._setButtonState(this._formElement.checkValidity())
   }
 }
 
