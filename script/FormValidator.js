@@ -42,7 +42,6 @@ export default class FormValidator {
     }
   }
 
-
   _setEventListeners() {
     this._inputsList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
@@ -66,8 +65,6 @@ export default class FormValidator {
       this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
-
-      // this._setButtonState(this._formElement.checkValidity())
   }
 }
 

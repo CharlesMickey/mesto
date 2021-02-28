@@ -78,7 +78,6 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
-
 const newValidClassImgForm = new FormValidator(validationConfig, formImage);
 newValidClassImgForm.enableValidation();
 
@@ -86,7 +85,6 @@ function showImgForm() {
   openPopup(imgForm);
   formImage.reset();
   newValidClassImgForm.quickValidationCheck();
-
 }
 
 function addNewCard(elem) {
