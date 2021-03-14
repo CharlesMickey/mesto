@@ -20,6 +20,8 @@ import UserInfo from './components/UserInfo.js';
 import FormValidator from './components/FormValidator.js';
 import Card from './components/Card.js';
 
+const popupWithImage = new PopupWithImage('#popup-image')
+
 const defaultCard = new Section({
   data: initialCards,
   renderer: (item) => {
@@ -27,7 +29,6 @@ const defaultCard = new Section({
       data: item,
       cardSelector: "#element",
       handleCardClick: () => {
-        const popupWithImage = new PopupWithImage('#popup-image')
         popupWithImage.open(item)
       }
     });
@@ -83,7 +84,6 @@ function handlerCreateNewCard() {
         data: item,
         cardSelector: "#element",
         handleCardClick: () => {
-          const popupWithImage = new PopupWithImage('#popup-image')
           popupWithImage.open(item)
         }
       });
