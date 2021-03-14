@@ -1,3 +1,5 @@
+import './pages/index.css';
+
 import {
   initialCards,
   buttonOpenForm,
@@ -9,14 +11,14 @@ import {
   interests,
   addLink,
   validationConfig
-} from '../utils/constants.js'
+} from './utils/constants.js'
 
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
-import FormValidator from '../components/FormValidator.js';
-import Card from '../components/Card.js';
+import Section from './components/Section.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/UserInfo.js';
+import FormValidator from './components/FormValidator.js';
+import Card from './components/Card.js';
 
 const defaultCard = new Section({
   data: initialCards,
