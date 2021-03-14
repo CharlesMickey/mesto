@@ -57,22 +57,12 @@ export default class FormValidator {
   quickValidationCheck() {
     this._disableValidation()
     this._setButtonState(this._formElement.checkValidity())
-
   }
 
   enableValidation() {
     this._setEventListeners();
-      this._formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
+    this._formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
   }
 }
-
-export const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
