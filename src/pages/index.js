@@ -1,4 +1,4 @@
-import './pages/index.css';
+import './index.css';
 
 import {
   initialCards,
@@ -6,36 +6,37 @@ import {
   buttonOpenImgAddForm,
   profileForm,
   formImage,
-  addName,
   nameInput,
   interests,
-  addLink,
   validationConfig
-} from './utils/constants.js'
+} from '../utils/constants.js'
 
-import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import UserInfo from './components/UserInfo.js';
-import FormValidator from './components/FormValidator.js';
-import Card from './components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import FormValidator from '../components/FormValidator.js';
+import Card from '../components/Card.js';
 
 const popupWithImage = new PopupWithImage('#popup-image')
+
+function createCard(item) {
+  const addCard = new Card({
+    data: item,
+    cardSelector: "#element",
+    handleCardClick: () => {
+      popupWithImage.open(item)
+    }
+  });
+  const cardElement = addCard.generateCard();
+  return cardElement;
+}
 
 const defaultCard = new Section({
   data: initialCards,
   renderer: (item) => {
-    const addCard = new Card({
-      data: item,
-      cardSelector: "#element",
-      handleCardClick: () => {
-        popupWithImage.open(item)
-      }
-    });
-    const cardElement = addCard.generateCard();
-    defaultCard.addItem(cardElement)
+    defaultCard.addItem(createCard(item))
   },
-
 }, '.elements__list')
 
 const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
@@ -54,11 +55,12 @@ function showUserForm() {
   interests.value = userInfo.aboutUser;
   newValidClassProfileForm.quickValidationCheck();
 }
+const inputsDataUserForm = profileFormClass._getInputValues()
 
-function formSubmitHandler() {
+function formSubmitHandler(inputsDataUserForm) {
   userInfoClass.setUserInfo({
-    nameInput: nameInput.value,
-    interests: interests.value
+    nameInput: inputsDataUserForm.name,
+    interests: inputsDataUserForm.about
   })
 }
 
@@ -73,26 +75,19 @@ function showImgForm() {
   newValidClassImgForm.quickValidationCheck();
 }
 
-function handlerCreateNewCard() {
-  const imageCard = new Section({
+const inputsDataImgForm = imageFormClass._getInputValues()
+
+function handlerCreateNewCard(inputsDataImgForm) {
+  defaultCard.constructor({
     data: [{
-      name: addName.value,
-      link: addLink.value
+      name: inputsDataImgForm.name,
+      link: inputsDataImgForm.link
     }],
     renderer: (item) => {
-      const addCard = new Card({
-        data: item,
-        cardSelector: "#element",
-        handleCardClick: () => {
-          popupWithImage.open(item)
-        }
-      });
-      const cardElement = addCard.generateCard();
-      imageCard.addItem(cardElement)
+      defaultCard.addItem(createCard(item))
     },
-
   }, '.elements__list')
-  imageCard.rendererItems()
+  defaultCard.rendererItems()
   imageFormClass.close()
 }
 

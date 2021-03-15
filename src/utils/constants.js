@@ -55,6 +55,4 @@ const imgForm = document.querySelector("#image-form");
 export const nameInput = document.querySelector('[name="name"]');
 export const interests = document.querySelector('[name="about"]');
 export const profileForm = profilePopup.querySelector(".popup__form");
-export const addName = imgForm.querySelector('[name="name"]');
-export const addLink = document.querySelector('[name="link"]');
 export const formImage = imgForm.querySelector(".popup__form");
