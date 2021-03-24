@@ -1,10 +1,7 @@
 export default class Api {
-  constructor({
-    addressApi,
-    token
-  }) {
-    this._addressApi = addressApi;
-    this._token = token;
+  constructor({ options }) {
+    this._addressApi = options.addressApi;
+    this.headers = options.headers;
   }
 
   getInitialCards() {
