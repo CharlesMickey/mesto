@@ -1,41 +1,10 @@
-const finZaliv = new URL('../images/mWCRoXLVIsk.jpg',
-  import.meta.url);
-const ladoga = new URL('../images/vzlWlVweWA4.jpg',
-  import.meta.url);
-const ural = new URL('../images/Zaporoj.jpg',
-  import.meta.url)
-const paris = new URL('../images/Paris.jpg',
-  import.meta.url);
-const barnaul = new URL('../images/Barnaul.jpg',
-  import.meta.url);
-const chernogoria = new URL('../images/Chernogor.jpg',
-  import.meta.url)
-
-export const initialCards = [{
-    name: 'Финский залив',
-    link: finZaliv
-  },
-  {
-    name: 'Ладожское озеро',
-    link: ladoga
-  },
-  {
-    name: 'Урал',
-    link: ural
-  },
-  {
-    name: 'Париж',
-    link: paris
-  },
-  {
-    name: 'Барнаул',
-    link: barnaul
-  },
-  {
-    name: 'Черногория',
-    link: chernogoria
+export const options = {
+  addressApi: 'https://mesto.nomoreparties.co/v1/cohort-21/',
+  headers: {
+    authorization: '7369cf7f-a783-416d-9205-2a3b31c3a870',
+    "Content-Type": "application/json"
   }
-];
+};
 
 export const validationConfig = {
   formSelector: '.popup__form',

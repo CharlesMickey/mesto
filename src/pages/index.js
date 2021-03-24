@@ -8,7 +8,8 @@ import {
   formImage,
   nameInput,
   interests,
-  validationConfig
+  validationConfig,
+  options
 } from '../utils/constants.js'
 
 import Section from '../components/Section.js';
@@ -20,6 +21,16 @@ import Card from '../components/Card.js';
 import Api from '../components/Api.js';
 
 const popupWithImage = new PopupWithImage('#popup-image')
+
+const api = new Api(options)
+
+api.getInitialCards()
+  .then((res) => {
+     return defaultCard.rendererItems(res)
+  })
+  .catch((err) => {
+    console.log(`Внимание, ошибка: ${err}`);
+  });
 
 function createCard(item) {
   const addCard = new Card({
@@ -34,7 +45,6 @@ function createCard(item) {
 }
 
 const defaultCard = new Section({
-  data: initialCards,
   renderer: (item) => {
     defaultCard.addItem(createCard(item))
   },
@@ -79,20 +89,16 @@ function showImgForm() {
 const inputsDataImgForm = imageFormClass._getInputValues()
 
 function handlerCreateNewCard(inputsDataImgForm) {
-  defaultCard.constructor({
-    data: [{
+ const item = [{
       name: inputsDataImgForm.name,
       link: inputsDataImgForm.link
-    }],
-    renderer: (item) => {
-      defaultCard.addItem(createCard(item))
-    },
-  }, '.elements__list')
-  defaultCard.rendererItems()
+    }];
+
+  defaultCard.rendererItems(item)
   imageFormClass.close()
 }
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
 
-defaultCard.rendererItems()
+// defaultCard.rendererItems()
