@@ -4,8 +4,8 @@ export default class Api {
     this._headers = options.headers;
   }
 
-  getInitialCards() {
-    return fetch(`${this._addressApi}cards`, {
+  _setConfigApi(endOfUrl) {
+    return fetch(`${this._addressApi}${endOfUrl}`, {
         headers: this._headers
       })
       .then(res => {
@@ -14,5 +14,10 @@ export default class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
+  }
+
+
+  getInitialCards() {
+    return this._setConfigApi("cards")
   }
 }

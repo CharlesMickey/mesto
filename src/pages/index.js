@@ -1,7 +1,6 @@
 import './index.css';
 
 import {
-  initialCards,
   buttonOpenForm,
   buttonOpenImgAddForm,
   profileForm,
@@ -24,14 +23,6 @@ const popupWithImage = new PopupWithImage('#popup-image')
 
 const api = new Api(options)
 
-api.getInitialCards()
-  .then((res) => {
-     return defaultCard.rendererItems(res)
-  })
-  .catch((err) => {
-    console.log(`Внимание, ошибка: ${err}`);
-  });
-
 function createCard(item) {
   const addCard = new Card({
     data: item,
@@ -48,7 +39,15 @@ const defaultCard = new Section({
   renderer: (item) => {
     defaultCard.addItem(createCard(item))
   },
-}, '.elements__list')
+}, '.elements__list');
+
+api.getInitialCards()
+  .then((res) => {
+     return defaultCard.rendererItems(res)
+  })
+  .catch((err) => {
+    console.log(`Внимание, ошибка: ${err}`);
+  });
 
 const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
 newValidClassProfileForm.enableValidation();
