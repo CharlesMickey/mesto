@@ -4,10 +4,10 @@ export default class Api {
     this._headers = options.headers;
   }
 
-  _setConfigApi(endOfUrl) {
-    return fetch(`${this._addressApi}${endOfUrl}`, {
-        headers: this._headers
-      })
+  _setConfigApi(endOfUrl, param = {
+    headers: this._headers,
+  }) {
+    return fetch(`${this._addressApi}${endOfUrl}`, param)
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -19,5 +19,9 @@ export default class Api {
 
   getInitialCards() {
     return this._setConfigApi("cards")
+  }
+
+  userInfo() {
+    return this._setConfigApi("users/me")
   }
 }

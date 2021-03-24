@@ -8,7 +8,7 @@ import {
   nameInput,
   interests,
   validationConfig,
-  options
+  options,
 } from '../utils/constants.js'
 
 import Section from '../components/Section.js';
@@ -20,6 +20,12 @@ import Card from '../components/Card.js';
 import Api from '../components/Api.js';
 
 const popupWithImage = new PopupWithImage('#popup-image')
+
+const userInfoClass = new UserInfo({
+  selectorUserName: '.profile__name',
+  selectorAboutUser: '.profile__interests',
+  selectorAvatarImg: '.profile__avatar'
+})
 
 const api = new Api(options)
 
@@ -35,6 +41,14 @@ function createCard(item) {
   return cardElement;
 }
 
+api.userInfo()
+  .then((res) => {
+    return userInfoClass.setUserAvatar(res)
+  })
+  .catch((err) => {
+    console.log(`Внимание, ошибка: ${err}`);
+  });
+
 const defaultCard = new Section({
   renderer: (item) => {
     defaultCard.addItem(createCard(item))
@@ -43,7 +57,7 @@ const defaultCard = new Section({
 
 api.getInitialCards()
   .then((res) => {
-     return defaultCard.rendererItems(res)
+    return defaultCard.rendererItems(res)
   })
   .catch((err) => {
     console.log(`Внимание, ошибка: ${err}`);
@@ -53,10 +67,6 @@ const newValidClassProfileForm = new FormValidator(validationConfig, profileForm
 newValidClassProfileForm.enableValidation();
 
 const profileFormClass = new PopupWithForm('#profile-popup', formSubmitHandler)
-const userInfoClass = new UserInfo({
-  selectorUserName: '.profile__name',
-  selectorAboutUser: '.profile__interests'
-})
 
 function showUserForm() {
   profileFormClass.open()
@@ -88,10 +98,10 @@ function showImgForm() {
 const inputsDataImgForm = imageFormClass._getInputValues()
 
 function handlerCreateNewCard(inputsDataImgForm) {
- const item = [{
-      name: inputsDataImgForm.name,
-      link: inputsDataImgForm.link
-    }];
+  const item = [{
+    name: inputsDataImgForm.name,
+    link: inputsDataImgForm.link
+  }];
 
   defaultCard.rendererItems(item)
   imageFormClass.close()
