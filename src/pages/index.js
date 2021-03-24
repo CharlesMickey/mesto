@@ -17,6 +17,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
+import Api from '../components/Api.js';
 
 const popupWithImage = new PopupWithImage('#popup-image')
 
