@@ -111,6 +111,10 @@ const inputsDataImgForm = imageFormClass._getInputValues()
 function handlerCreateNewCard(inputsDataImgForm) {
   api.addNewCard(inputsDataImgForm)
     .then((res) => {
+     res = [{
+        name: inputsDataImgForm.name,
+        link: inputsDataImgForm.link
+      }];
       return defaultCard.rendererItems(res)
     })
     .catch((err) => {
