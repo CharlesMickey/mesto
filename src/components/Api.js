@@ -35,8 +35,19 @@ export default class Api {
     })
   }
 
-
-
-
-
+  addNewCard(data) {
+    return this._setConfigApi("cards", {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      })
+    })
+  }
 }
+
+
+
+
+

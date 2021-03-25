@@ -109,12 +109,13 @@ function showImgForm() {
 const inputsDataImgForm = imageFormClass._getInputValues()
 
 function handlerCreateNewCard(inputsDataImgForm) {
-  const item = [{
-    name: inputsDataImgForm.name,
-    link: inputsDataImgForm.link
-  }];
-
-  defaultCard.rendererItems(item)
+  api.addNewCard(inputsDataImgForm)
+    .then((res) => {
+      return defaultCard.rendererItems(res)
+    })
+    .catch((err) => {
+      console.log(`Внимание, ошибка: ${err}`);
+    });
   imageFormClass.close()
 }
 
