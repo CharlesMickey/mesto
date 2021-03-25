@@ -30,7 +30,10 @@
               <img class="element__image element__image_popup_open" src="#" alt="Фото Мест">
               <div class="element__card">
                 <h2 class="element__title"></h2>
-                <button type="button" class="element__like"></button>
+                <div class="element__likes-group">
+                  <button type="button" class="element__like"></button>
+                  <p class="element__like-counter">0</p>
+                </div>
               </div>
             </li>
           </template>
@@ -110,6 +113,13 @@
             </fieldset>
             <button type="submit" value="Отправить на сервер" class="popup__button popup__button-submit">Создать</button>
           </form>
+        </div>
+      </div>
+      <div class="popup" id="delete-form">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <h2 class="popup__form-name">Вы уверены?</h2>
+            <button type="submit" value="Отправить на сервер" class="popup__button popup__button-submit popup__form">Да</button>
         </div>
       </div>
       <div class="popup" id="popup-image">

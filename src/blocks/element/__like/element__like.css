@@ -1,7 +1,7 @@
 .element__like {
   background-image: url(../../../images/Like.svg);
-  min-width: 20.76px;
-  height: 18.13px;
+  width: 22px;
+  height: 19px;
   cursor: pointer;
   background-position: center;
   background-size: contain;
@@ -10,7 +10,6 @@
   border-style: none;
   outline: none;
   transition: opacity 0.2s linear;
-  margin-left: 20px;
 }
 
 .element__like:hover {

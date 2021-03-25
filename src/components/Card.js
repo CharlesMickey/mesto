@@ -8,6 +8,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
+    this._likes = data.likes
   }
 
   _getTemplate() {
@@ -48,6 +49,10 @@ export default class Card {
     this._element.querySelector('.element__image').src = this._link;
     this._element.querySelector('.element__image').alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
+    if(this._likes){
+      this._element.querySelector('.element__like-counter').textContent = this._likes.length;
+    }
+
 
     return this._element;
   }
