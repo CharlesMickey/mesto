@@ -43,6 +43,14 @@ function createCard(item) {
 
 api.userInfo()
   .then((res) => {
+    return userInfoClass.setUserInfo(res)
+  })
+  .catch((err) => {
+    console.log(`Внимание, ошибка: ${err}`);
+  });
+
+api.userInfo()
+  .then((res) => {
     return userInfoClass.setUserAvatar(res)
   })
   .catch((err) => {
@@ -78,10 +86,13 @@ function showUserForm() {
 const inputsDataUserForm = profileFormClass._getInputValues()
 
 function formSubmitHandler(inputsDataUserForm) {
-  userInfoClass.setUserInfo({
-    nameInput: inputsDataUserForm.name,
-    interests: inputsDataUserForm.about
-  })
+  api.editProfile(inputsDataUserForm)
+    .then((res) => {
+      return userInfoClass.setUserInfo(res)
+    })
+    .catch((err) => {
+      console.log(`Внимание, ошибка: ${err}`);
+    });
 }
 
 const newValidClassImgForm = new FormValidator(validationConfig, formImage);

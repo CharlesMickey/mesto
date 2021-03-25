@@ -19,12 +19,9 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo({
-    nameInput,
-    interests
-  }) {
-    this._userName.textContent = nameInput;
-    this._aboutUser.textContent = interests;
+  setUserInfo(data) {
+    this._userName.textContent = data.name;
+    this._aboutUser.textContent = data.about;
   }
 
   setUserAvatar(data) {

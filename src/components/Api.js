@@ -16,12 +16,27 @@ export default class Api {
       })
   }
 
+  userInfo() {
+    return this._setConfigApi("users/me")
+  }
 
   getInitialCards() {
     return this._setConfigApi("cards")
   }
 
-  userInfo() {
-    return this._setConfigApi("users/me")
+  editProfile(data) {
+    return this._setConfigApi("users/me", {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about
+      })
+    })
   }
+
+
+
+
+
 }
