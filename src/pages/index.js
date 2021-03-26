@@ -31,6 +31,26 @@ const userInfoClass = new UserInfo({
 })
 
 const api = new Api(options)
+const popupDeleteCard = new PopupDeleteCard('#delete-form')
+popupDeleteCard.setEventListeners()
+
+function handleCardDelete(item, card) {
+  popupDeleteCard.setHandlerFormSubmit(() => {
+    const buttonText = popupDeleteCard.getButtonName();
+    popupDeleteCard.setButtonName("Сохранение..");
+      api.deleteCard(item._id)
+          .then(() => {
+              card.deleteCard();
+          })
+          .catch((err) => {
+              console.log(`${err}`);
+          })
+          .finally(() => popupDeleteCard.setButtonName(buttonText))
+          popupDeleteCard.close();
+  });
+
+  popupDeleteCard.open();
+}
 
 function createCard(item, ownerCards) {
   const addCard = new Card({
@@ -40,12 +60,7 @@ function createCard(item, ownerCards) {
       popupWithImage.open(item)
     },
     handleDeleteCard: () => {
-      const popupDeleteCard = new PopupDeleteCard({
-        popupSelector: '#delete-form',
-        api: api.deleteCard(item._id)
-      })
-      popupDeleteCard.open()
-
+      handleCardDelete(item, addCard)
     },
     ownerCards
   });

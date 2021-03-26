@@ -1,30 +1,30 @@
 import Popup from './Popup.js'
 
 export default class PopupDeleteCard extends Popup {
-  constructor({
-    popupSelector,
-    api,
-  }) {
+  constructor(popupSelector) {
     super(popupSelector)
+    this._popup = document.querySelector(this._popupSelector);
     this._popupContainer = this._popup.querySelector('.popup__container');
-    this._api = api;
-    this._setEventListeners()
+    this._popupForm = this._popupContainer.querySelector('.popup__form');
+    this._submitButton = this._popupForm.querySelector(".popup__button-submit")
+  }
+  setButtonName(text) {
+    this._submitButton.textContent = text;
+  }
+  getButtonName() {
+    return this._submitButton.textContent;
+  }
+  setHandlerFormSubmit(data) {
+    this.setHandlerFormSubmit = data;
   }
 
-
-  _setEventListeners() {
+  setEventListeners() {
     super.setEventListeners();
-    const deleteHandler = (evt) => {
+    if (this._popupForm) {
+    this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._api
-        .then((res) => {
-          document.getElementById(res._id).remove();
-        });
-
-      this._popupContainer.removeEventListener('submit', deleteHandler);
-      this.close();
-    };
-    this._popupContainer.addEventListener('submit', deleteHandler);
-
+      this.setHandlerFormSubmit();
+    });
+  }
   }
 }

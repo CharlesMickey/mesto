@@ -27,9 +27,10 @@ export default class Card {
   }
 
 
-  _handleDelete() {
-    this._element.closest('.element').remove();
-  }
+  deleteCard() {
+    this._element.remove();
+    this._element = null;
+}
 
   _handleLike() {
     this._element.querySelector('.element__like').classList.toggle('element__like_active');
@@ -58,7 +59,7 @@ export default class Card {
     if(this._likes){
       this._element.querySelector('.element__like-counter').textContent = this._likes.length;
     }
-    if(this._ownerCards === this._user ) {
+    if(this._ownerCards === this._user) {
       this._element.querySelector('.element__trash').style.display = 'block';
     }
     return this._element;
