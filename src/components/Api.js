@@ -59,6 +59,7 @@ export default class Api {
       headers: this._headers,
     })
   }
+  
   removeLike(id) {
     return this._setConfigApi(`cards/likes/${id}`, {
       method: 'DELETE',

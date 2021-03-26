@@ -55,6 +55,26 @@ function handleCardDelete(item, card) {
   popupDeleteCard.open();
 }
 
+function handleLikePut(card, data) {
+  if (card.liked()) {
+    api.removeLike(data._id)
+      .then((data) => {
+        card.putLike(data);
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      });
+  } else {
+    api.putLike(data._id)
+      .then((data) => {
+        card.putLike(data);
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      });
+  }
+}
+
 function createCard(item, ownerCards) {
   const addCard = new Card({
     data: item,
@@ -65,9 +85,13 @@ function createCard(item, ownerCards) {
     handleDeleteCard: () => {
       handleCardDelete(item, addCard)
     },
-    ownerCards
+    ownerCards,
+    handleLike: () => {
+      handleLikePut(addCard, item)
+    },
   });
   const cardElement = addCard.generateCard();
+  addCard.putLike(item)
   return cardElement;
 }
 
@@ -117,7 +141,6 @@ function showImgForm() {
 
 const inputsDataImgForm = imageFormClass._getInputValues()
 
-
 function handlerCreateNewCard(inputsDataImgForm) {
   const buttonText = imageFormClass.getButtonName();
   imageFormClass.setButtonName("Сохранение..");
@@ -136,8 +159,6 @@ function handlerCreateNewCard(inputsDataImgForm) {
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
-
-
 
 Promise.all([api.getInitialCards(), api.userInfo()])
   .then(([cards, userData]) => {
