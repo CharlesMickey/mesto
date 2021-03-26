@@ -14,12 +14,15 @@ import {
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupDeleteCard from '../components/PopupDeleteCard.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
 import Api from '../components/Api.js';
 
+let ownerCards = null;
 const popupWithImage = new PopupWithImage('#popup-image')
+
 
 const userInfoClass = new UserInfo({
   selectorUserName: '.profile__name',
@@ -29,47 +32,32 @@ const userInfoClass = new UserInfo({
 
 const api = new Api(options)
 
-function createCard(item) {
+function createCard(item, ownerCards) {
   const addCard = new Card({
     data: item,
     cardSelector: "#element",
     handleCardClick: () => {
       popupWithImage.open(item)
-    }
+    },
+    handleDeleteCard: () => {
+      const popupDeleteCard = new PopupDeleteCard({
+        popupSelector: '#delete-form',
+        api: api.deleteCard(item._id)
+      })
+      popupDeleteCard.open()
+
+    },
+    ownerCards
   });
   const cardElement = addCard.generateCard();
   return cardElement;
 }
 
-api.userInfo()
-  .then((res) => {
-    return userInfoClass.setUserInfo(res)
-  })
-  .catch((err) => {
-    console.log(`Внимание, ошибка: ${err}`);
-  });
-
-api.userInfo()
-  .then((res) => {
-    return userInfoClass.setUserAvatar(res)
-  })
-  .catch((err) => {
-    console.log(`Внимание, ошибка: ${err}`);
-  });
-
 const defaultCard = new Section({
   renderer: (item) => {
-    defaultCard.addItem(createCard(item))
+    defaultCard.addItem(createCard(item, ownerCards))
   },
 }, '.elements__list');
-
-api.getInitialCards()
-  .then((res) => {
-    return defaultCard.rendererItems(res)
-  })
-  .catch((err) => {
-    console.log(`Внимание, ошибка: ${err}`);
-  });
 
 const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
 newValidClassProfileForm.enableValidation();
@@ -108,13 +96,10 @@ function showImgForm() {
 
 const inputsDataImgForm = imageFormClass._getInputValues()
 
+
 function handlerCreateNewCard(inputsDataImgForm) {
   api.addNewCard(inputsDataImgForm)
     .then((res) => {
-      res = [{
-        name: inputsDataImgForm.name,
-        link: inputsDataImgForm.link
-      }];
       return defaultCard.rendererItems(res)
     })
     .catch((err) => {
@@ -126,4 +111,15 @@ function handlerCreateNewCard(inputsDataImgForm) {
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
 
-// defaultCard.rendererItems()
+
+
+Promise.all([api.getInitialCards(), api.userInfo()])
+  .then(([cards, userData]) => {
+    ownerCards = userData._id;
+    userInfoClass.setUserInfo(userData)
+    userInfoClass.setUserAvatar(userData)
+    defaultCard.rendererItems(cards);
+  })
+  .catch((err) => {
+    console.log(`${err}`);
+  });

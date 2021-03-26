@@ -25,3 +25,4 @@ export const nameInput = document.querySelector('[name="name"]');
 export const interests = document.querySelector('[name="about"]');
 export const profileForm = profilePopup.querySelector(".popup__form");
 export const formImage = imgForm.querySelector(".popup__form");
+export const iconTrash = document.querySelector('.element__trash')

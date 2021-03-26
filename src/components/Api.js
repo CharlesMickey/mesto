@@ -45,6 +45,14 @@ export default class Api {
       })
     })
   }
+
+
+  deleteCard(id) {
+    return this._setConfigApi(`cards/${id}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+  }
 }
 
 
