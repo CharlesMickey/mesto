@@ -3,7 +3,15 @@ export default class Popup {
     this._popupSelector = popupSelector;
     this._popup = document.querySelector(this._popupSelector);
     this._handleEscClose  = this._handleEscClose.bind(this)
+    this._popupContainer = this._popup.querySelector('.popup__container');
     this.setEventListeners()
+  }
+
+  setButtonName(text) {
+    this._submitButton.textContent = text;
+  }
+  getButtonName() {
+    return this._submitButton.textContent;
   }
 
   open() {

@@ -31,22 +31,24 @@ const userInfoClass = new UserInfo({
 })
 
 const api = new Api(options)
+
 const popupDeleteCard = new PopupDeleteCard('#delete-form')
-popupDeleteCard.setEventListeners()
 
 function handleCardDelete(item, card) {
-  popupDeleteCard.setHandlerFormSubmit(() => {
+
+  popupDeleteCard.setEventListeners()
+  popupDeleteCard.setHandlerFormSubmit((evt) => {
     const buttonText = popupDeleteCard.getButtonName();
     popupDeleteCard.setButtonName("Сохранение..");
-      api.deleteCard(item._id)
-          .then(() => {
-              card.deleteCard();
-          })
-          .catch((err) => {
-              console.log(`${err}`);
-          })
-          .finally(() => popupDeleteCard.setButtonName(buttonText))
-          popupDeleteCard.close();
+    api.deleteCard(item._id)
+      .then(() => {
+        card.deleteCard();
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      })
+      .finally(() => popupDeleteCard.setButtonName(buttonText))
+    popupDeleteCard.close();
   });
 
   popupDeleteCard.open();
@@ -113,13 +115,18 @@ const inputsDataImgForm = imageFormClass._getInputValues()
 
 
 function handlerCreateNewCard(inputsDataImgForm) {
-  api.addNewCard(inputsDataImgForm)
-    .then((res) => {
-      return defaultCard.rendererItems(res)
+  const buttonText = imageFormClass.getButtonName();
+  imageFormClass.setButtonName("Сохранение..");
+  api
+    .addNewCard(inputsDataImgForm)
+    .then((inputsDataImgForm) => {
+      return defaultCard.addItem(createCard(inputsDataImgForm, ownerCards))
     })
     .catch((err) => {
       console.log(`Внимание, ошибка: ${err}`);
-    });
+    })
+    .finally(() => imageFormClass.setButtonName(buttonText))
+
   imageFormClass.close()
 }
 
