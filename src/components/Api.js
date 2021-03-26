@@ -46,16 +46,24 @@ export default class Api {
     })
   }
 
-
   deleteCard(id) {
     return this._setConfigApi(`cards/${id}`, {
       method: 'DELETE',
       headers: this._headers,
     })
   }
+
+  putLike(id) {
+    return this._setConfigApi(`cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+  }
+  removeLike(id) {
+    return this._setConfigApi(`cards/likes/${id}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+  }
+
 }
-
-
-
-
-

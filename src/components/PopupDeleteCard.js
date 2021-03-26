@@ -8,7 +8,7 @@ export default class PopupDeleteCard extends Popup {
   }
 
   setHandlerFormSubmit(data) {
-    this.setHandlerFormSubmit = data;
+    this._setHandlerFormSubmit = data;
   }
 
   setEventListeners() {
@@ -16,7 +16,7 @@ export default class PopupDeleteCard extends Popup {
     if (this._popupForm) {
       this._popupForm.addEventListener('submit', (evt) => {
         evt.preventDefault();
-        this.setHandlerFormSubmit(this);
+        this._setHandlerFormSubmit();
       });
     }
   }

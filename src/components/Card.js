@@ -4,6 +4,7 @@ export default class Card {
     cardSelector,
     handleCardClick,
     handleDeleteCard,
+    handleLike,
     ownerCards,
   }) {
     this._cardSelector = cardSelector;
@@ -14,6 +15,12 @@ export default class Card {
     this._likes = data.likes;
     this._ownerCards = ownerCards
     this._user = data.owner._id;
+    this._likes = data.likes
+    this._handleLike = handleLike
+  }
+
+  likes() {
+    return this._likes;
   }
 
   _getTemplate() {
@@ -25,7 +32,6 @@ export default class Card {
 
     return cardElement;
   }
-
 
   deleteCard() {
     this._element.remove();
@@ -53,6 +59,7 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setListeners();
+    // this._handleLike()
     this._element.querySelector('.element__image').src = this._link;
     this._element.querySelector('.element__image').alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;

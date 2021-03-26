@@ -12,7 +12,6 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     this._inputList = this._popupForm.querySelectorAll('.popup__input');
-
     this._formValues = {}; // создать объект и добавить в него значения всех полей
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value

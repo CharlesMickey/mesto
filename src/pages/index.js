@@ -33,21 +33,22 @@ const userInfoClass = new UserInfo({
 const api = new Api(options)
 
 const popupDeleteCard = new PopupDeleteCard('#delete-form')
+popupDeleteCard.setEventListeners()
 
 function handleCardDelete(item, card) {
-
-  popupDeleteCard.setEventListeners()
-  popupDeleteCard.setHandlerFormSubmit((evt) => {
+  popupDeleteCard.setHandlerFormSubmit(() => {
     const buttonText = popupDeleteCard.getButtonName();
-    popupDeleteCard.setButtonName("Сохранение..");
+    popupDeleteCard.setButtonName("Сохранение...");
     api.deleteCard(item._id)
       .then(() => {
-        card.deleteCard();
+        card.deleteCard()
+
       })
       .catch((err) => {
         console.log(`${err}`);
       })
       .finally(() => popupDeleteCard.setButtonName(buttonText))
+
     popupDeleteCard.close();
   });
 
@@ -91,13 +92,16 @@ function showUserForm() {
 const inputsDataUserForm = profileFormClass._getInputValues()
 
 function formSubmitHandler(inputsDataUserForm) {
+  const buttonText = profileFormClass.getButtonName();
+  profileFormClass.setButtonName("Сохранение..");
   api.editProfile(inputsDataUserForm)
     .then((res) => {
       return userInfoClass.setUserInfo(res)
     })
     .catch((err) => {
       console.log(`Внимание, ошибка: ${err}`);
-    });
+    })
+    .finally(() => profileFormClass.setButtonName(buttonText))
 }
 
 const newValidClassImgForm = new FormValidator(validationConfig, formImage);
