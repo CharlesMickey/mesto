@@ -3,17 +3,5 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
-
-@media screen and (max-width: 907px) {
-  .profile__avatar {
-    margin-left: 27px;
-    }
-  }
-
-@media screen and (max-width: 770px) {
-  .profile__avatar {
-    margin-left: 0px;
-    }
-  }
-

@@ -59,11 +59,21 @@ export default class Api {
       headers: this._headers,
     })
   }
-  
+
   removeLike(id) {
     return this._setConfigApi(`cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers,
+    })
+  }
+
+  editAvatar(data) {
+    return this._setConfigApi("avatar", {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.name,
+      })
     })
   }
 
