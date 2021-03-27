@@ -2,11 +2,13 @@
 
 ## Языки/инструменты
 * `JS`
+- * `API`
+- * `Webpack`
+
 * `CSS`
 * `Flexbox`
 * `Grid Layout`
 * `Transition`
-* `Grid Layout`
 * `Адаптивная верстка`
 
 ## Файловая структура:
