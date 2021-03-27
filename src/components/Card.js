@@ -6,7 +6,6 @@ export default class Card {
     handleDeleteCard,
     handleLike,
     ownerCards,
-    api
   }) {
     this._cardSelector = cardSelector;
     this._name = data.name;
@@ -17,7 +16,6 @@ export default class Card {
     this._ownerCards = ownerCards
     this._user = data.owner._id;
     this._handleLike = handleLike
-    this._api = api
   }
 
   _getTemplate() {
