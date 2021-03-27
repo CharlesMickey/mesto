@@ -68,11 +68,11 @@ export default class Api {
   }
 
   editAvatar(data) {
-    return this._setConfigApi("avatar", {
+    return this._setConfigApi("users/me/avatar", {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.name,
+        avatar: data.link,
       })
     })
   }

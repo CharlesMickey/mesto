@@ -18,10 +18,13 @@ export const validationConfig = {
 const profile = document.querySelector(".profile");
 const profileProfileInfo = profile.querySelector(".profile__profile-info");
 export const buttonOpenForm = profileProfileInfo.querySelector(".profile__edit-button");
+export const openEditAvatarForm = profile.querySelector(".profile__avatar");
 export const buttonOpenImgAddForm = document.querySelector(".profile__add-button");
 const profilePopup = document.querySelector("#profile-popup");
 const imgForm = document.querySelector("#image-form");
+const avatarForm = document.querySelector("#avatar-form");
 export const nameInput = document.querySelector('[name="name"]');
 export const interests = document.querySelector('[name="about"]');
 export const profileForm = profilePopup.querySelector(".popup__form");
 export const formImage = imgForm.querySelector(".popup__form");
+export const formAvatar = avatarForm.querySelector(".popup__form");

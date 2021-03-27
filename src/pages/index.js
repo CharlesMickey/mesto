@@ -5,10 +5,12 @@ import {
   buttonOpenImgAddForm,
   profileForm,
   formImage,
+  formAvatar,
   nameInput,
   interests,
   validationConfig,
   options,
+  openEditAvatarForm
 } from '../utils/constants.js'
 
 import Section from '../components/Section.js';
@@ -101,6 +103,34 @@ const defaultCard = new Section({
   },
 }, '.elements__list');
 
+const newValidClassAvatarForm = new FormValidator(validationConfig, formAvatar);
+newValidClassAvatarForm.enableValidation();
+
+const profileAvatarFormClass = new PopupWithForm('#avatar-form', handlerCreateNewAvatar)
+
+function showEditAvatarForm() {
+  profileAvatarFormClass.open()
+  newValidClassAvatarForm.quickValidationCheck();
+}
+
+const inputsDataAvatarForm = profileAvatarFormClass._getInputValues()
+
+function handlerCreateNewAvatar(inputsDataAvatarForm) {
+  const buttonText = profileAvatarFormClass.getButtonName();
+  profileAvatarFormClass.setButtonName("Сохранение..");
+  api
+    .editAvatar(inputsDataAvatarForm)
+    .then((inputsDataAvatarForm) => {
+       return userInfoClass.setUserAvatar(inputsDataAvatarForm)
+    })
+    .catch((err) => {
+      console.log(`Внимание, ошибка: ${err}`);
+    })
+    .finally(() => profileAvatarFormClass.setButtonName(buttonText))
+
+    profileAvatarFormClass.close()
+}
+
 const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
 newValidClassProfileForm.enableValidation();
 
@@ -113,6 +143,7 @@ function showUserForm() {
   interests.value = userInfo.aboutUser;
   newValidClassProfileForm.quickValidationCheck();
 }
+
 const inputsDataUserForm = profileFormClass._getInputValues()
 
 function formSubmitHandler(inputsDataUserForm) {
@@ -159,6 +190,7 @@ function handlerCreateNewCard(inputsDataImgForm) {
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
 buttonOpenForm.addEventListener('click', showUserForm);
+openEditAvatarForm.addEventListener('click', showEditAvatarForm);
 
 Promise.all([api.getInitialCards(), api.userInfo()])
   .then(([cards, userData]) => {
