@@ -44,14 +44,12 @@ function handleCardDelete(item, card) {
     api.deleteCard(item._id)
       .then(() => {
         card.deleteCard()
-
+        popupDeleteCard.close();
       })
       .catch((err) => {
         console.log(`${err}`);
       })
       .finally(() => popupDeleteCard.setButtonName(buttonText))
-
-    popupDeleteCard.close();
   });
 
   popupDeleteCard.open();
@@ -121,14 +119,13 @@ function handlerCreateNewAvatar(inputsDataAvatarForm) {
   api
     .editAvatar(inputsDataAvatarForm)
     .then((inputsDataAvatarForm) => {
+      profileAvatarFormClass.close()
        return userInfoClass.setUserAvatar(inputsDataAvatarForm)
     })
     .catch((err) => {
       console.log(`Внимание, ошибка: ${err}`);
     })
     .finally(() => profileAvatarFormClass.setButtonName(buttonText))
-
-    profileAvatarFormClass.close()
 }
 
 const newValidClassProfileForm = new FormValidator(validationConfig, profileForm);
@@ -151,6 +148,7 @@ function formSubmitHandler(inputsDataUserForm) {
   profileFormClass.setButtonName("Сохранение..");
   api.editProfile(inputsDataUserForm)
     .then((res) => {
+      profileFormClass.close()
       return userInfoClass.setUserInfo(res)
     })
     .catch((err) => {
@@ -178,14 +176,13 @@ function handlerCreateNewCard(inputsDataImgForm) {
   api
     .addNewCard(inputsDataImgForm)
     .then((inputsDataImgForm) => {
+      imageFormClass.close()
       return defaultCard.addItem(createCard(inputsDataImgForm, ownerCards))
     })
     .catch((err) => {
       console.log(`Внимание, ошибка: ${err}`);
     })
     .finally(() => imageFormClass.setButtonName(buttonText))
-
-  imageFormClass.close()
 }
 
 buttonOpenImgAddForm.addEventListener('click', showImgForm);
