@@ -29,5 +29,7 @@ ____________________________
 *Чухненко Артур (CharlesMickey.ru@yandex.com)*
 
 
-https://user-images.githubusercontent.com/50279935/115882854-d8b75100-a455-11eb-8ec8-e36fb733fea4.mp4
+https://user-images.githubusercontent.com/50279935/115883691-bd007a80-a456-11eb-9e77-81dd4501fae8.mp4
+
+
 
