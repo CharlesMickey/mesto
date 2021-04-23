@@ -44,6 +44,6 @@ https://user-images.githubusercontent.com/50279935/115883691-bd007a80-a456-11eb-
 
 ```npm run dev```
 
-Если все прошло хорошо, то проект можно увидеть по адресу http://localhost:3000
+Если все прошло хорошо, то проект можно увидеть по адресу http://localhost:8080
 
 
